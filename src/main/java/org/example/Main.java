@@ -64,6 +64,21 @@ public class Main {
             println("Eccezione catturata: " + e.getMessage());
         }
 
+        println("\n\nes 2: Reclutamento Supereroi");
+        // imposta una missione con difficoltà 75 ed esegui un ciclo di 5 tentativi di reclutamento. Cattura l'eccezione se l'eroe è troppo debole e passa al candidato successivo senza bloccare il programma.
+        Reclutatore reclutatore = new Reclutatore();
+        int difficoltaMissione = 75;
+
+        for (int i = 0; i < 5; i++) {
+            try {
+                String risultato = reclutatore.reclutaEroe(difficoltaMissione);
+                println(risultato);
+            } catch (EroeNonIdoneoException e) {
+                println("Eccezione catturata: " + e.getMessage());
+                println("Nome eroe: " + e.getNomeEroe() + ", livello: " + e.getLivelloEroe());
+            }
+        }
+
         
     }
 }
