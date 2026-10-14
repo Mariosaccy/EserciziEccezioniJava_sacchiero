@@ -1,5 +1,7 @@
 package org.example;
 
+import static java.lang.IO.println;
+
 /*
 
 fare questi esercizi in Java, usando eccezioni checked e unchecked, e una libreria esterna per generare dati casuali.
@@ -29,6 +31,39 @@ cose da fare:
 */
 public class Main {
     public  static void main() {
+        println("es 1: Conto Corrente");
+
+        // prove:
+        // Prelievo eccessivo: cattura la checked exception, stampa il deficit di denaro e usa un blocco finally.
+        // Prelievo negativo: cattura la unchecked exception.
+        // Prelievo valido: operazione completata con successo.
+
+        ContoBancario conto = new ContoBancario(1000);
+
+        // Prelievo eccessivo
+        try {
+            conto.preleva(1500);
+        } catch (SaldoInsufficienteException e) {
+            println("Eccezione catturata: " + e.getMessage());
+        } finally {
+            println("Blocco finally eseguito.");
+        }
+
+        // Prelievo negativo
+        try {
+            conto.preleva(-100);
+        } catch (ImportoNonValidoException e) {
+            println("Eccezione catturata: " + e.getMessage());
+        }
+
+        // Prelievo valido
+        try {
+            conto.preleva(500);
+            println("Prelievo completato con successo. Saldo attuale: " + conto.getSaldo());
+        } catch (SaldoInsufficienteException | ImportoNonValidoException e) {
+            println("Eccezione catturata: " + e.getMessage());
+        }
+
         
     }
 }
