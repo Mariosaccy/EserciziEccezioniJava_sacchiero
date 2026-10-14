@@ -1,11 +1,5 @@
 package org.example;
 
-/**
- * Classe ContoBancario che rappresenta un conto corrente.
- * Contiene il saldo e il metodo preleva(double).
- * Classe ContoBancario: contiene il saldo e il metodo preleva(double). Dichiara la checked exception nella firma del metodo con throws.
- */
-
 public class ContoBancario {
 
     private double saldo;
@@ -24,7 +18,7 @@ public class ContoBancario {
             throw new ImportoNonValidoException("Importo non valido: " + importo);
         }
         if (importo > saldo) {
-            throw new SaldoInsufficienteException("Saldo insufficiente. Saldo attuale: " + saldo + ", importo richiesto: " + importo);
+            throw new SaldoInsufficienteException("Saldo insufficiente. Saldo attuale: " + saldo + ", importo richiesto: " + importo + "mancano: " + (importo-saldo));
         }
         saldo -= importo;
     }

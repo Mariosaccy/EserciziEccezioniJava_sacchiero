@@ -15,7 +15,6 @@
     </properties>
 
     <dependencies>
-        <!-- net.datafaker:datafaker -->
         <dependency>
             <groupId>net.datafaker</groupId>
             <artifactId>datafaker</artifactId>
